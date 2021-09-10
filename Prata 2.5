@@ -1,0 +1,17 @@
+
+#include <iostream>
+
+using namespace std;
+double lata_swietlne_do_jednostek_astronomicznych(){
+    double lata_swietlne;
+    double jednostki_astronomiczne;
+    cout << "Podaj liczbe lat swietlnych:";
+    cin >> lata_swietlne;
+    jednostki_astronomiczne = 63240 * lata_swietlne;
+    cout << lata_swietlne << " lat swietnlych = " << jednostki_astronomiczne << " jednostek astronomicznych." << endl;
+    
+}
+int main()
+{
+    lata_swietlne_do_jednostek_astronomicznych();
+}
