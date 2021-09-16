@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+struct Batonik{
+    char marka[20];
+    float waga;
+    int liczba_kalorii;
+};
+
+int main()
+{
+    Batonik milka[3]=
+    {
+      {"Peanut Caramel", 4.1,500} ,
+      {"Oreo", 2.4,432} ,
+      {"Coconut", 6.3,565} 
+    };
+    
+    for (int i=0;i<3;i++){
+        cout << milka[i].marka << ", " << milka[i].waga << ", " << milka[i].liczba_kalorii << ", " << endl;
+    }
+    return 0;
+}
