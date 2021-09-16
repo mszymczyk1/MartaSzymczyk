@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+
+
+using namespace std;
+
+int main()
+{   string imie;
+    string nazwisko;
+    cout << "Podaj imie:";
+    getline(cin,imie);
+    cout << "Podaj nazwisko:";
+    getline(cin, nazwisko);
+    imie = imie + ", ";
+    imie= imie + nazwisko;
+    cout << imie << endl;
+  return 0;  
+}
