@@ -1,0 +1,19 @@
+#include <iostream>
+
+using namespace std;
+struct Batonik{
+    char marka[20];
+    float waga;
+    int liczba_kalorii;
+};
+
+int main()
+{
+    Batonik snack{
+        "Mocha Munch",
+        2.3,
+        350};
+    cout << snack.marka << ", " << snack.waga << ", " << snack.liczba_kalorii << ", " << endl;
+
+    return 0;
+}
