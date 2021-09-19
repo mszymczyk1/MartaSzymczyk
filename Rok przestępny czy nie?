@@ -10,7 +10,7 @@ int main()
     int a = podany_rok % 4;
     int b = podany_rok % 100;
     int c = podany_rok % 400;
-    if ( (a == 0) && (b != 0) && (c != 0))
+    if ( ((a == 0) && (b != 0)) || (c == 0))
     {
     cout << podany_rok << " r. jest przestępny!" << endl;
     }
