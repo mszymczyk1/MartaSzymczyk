@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int liczba_a;
+    int liczba_b;
+    cout << "Podaj pierwsza liczbe A=";
+    cin >> liczba_a;
+    cout << "Podaj druga liczbe B=";
+    cin >> liczba_b;
+    char znak;
+    cout << "Podaj znak operacji:";
+    cin >> znak;
+    switch (znak) {
+        case '&':
+        cout << "A&B=" << (liczba_a & liczba_b);
+        break;
+        
+        case '>':
+        cout << "A>>B=" << (liczba_a >> liczba_b);
+        break;
+        
+        case '|':
+        cout << "A|B=" << (liczba_a | liczba_b);
+        break;
+        
+        case '^':
+        cout << "A^B=" << (liczba_a ^ liczba_b);
+        break;
+        
+        default:
+        cout << "Blad: podano zly znak operacji!" << endl;
+    }
+    return 0;
+}
