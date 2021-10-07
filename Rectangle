@@ -1,0 +1,69 @@
+#include <iostream>
+
+using namespace std;
+class Point {
+    int m_x;
+    int m_y;
+public:
+    Point(int x = 0, int y = 0)
+    {
+        m_x = x;
+        m_y = y;
+    }
+    void set_x(int set_x)
+    {
+        m_x = set_x;
+    }
+    void set_y(int set_y)
+    {
+        m_y = set_y;
+    }
+    int get_x()  {return m_x;}
+    int get_y()  {return m_y;}
+};
+class Rectangle{
+    Point m_a;
+    Point m_b;
+    Point m_c;
+    Point m_d;
+    
+public:
+    Rectangle(Point a=Point(1,1), Point b=Point(1,-1), Point c=Point(-1,-1), Point d=Point(-1,1))
+    {
+        m_a=a;
+        m_b=b;
+        m_c=c;
+        m_d=d;
+    }
+    
+    void set_a(Point set_a)
+    {
+        m_a=set_a;
+    }
+    void set_b(Point set_b)
+    {
+        m_b=set_b;
+    }
+    void set_c(Point set_c)
+    {
+        m_c=set_c;
+    }
+    void set_d(Point set_d)
+    {
+        m_d=set_d;
+    }
+    
+    Point get_a() {return m_a;}
+    Point get_b() {return m_b;}
+    Point get_c() {return m_c;}
+    Point get_d() {return m_d;}
+};
+    //int area()
+
+int main()
+{
+    Rectangle re1;
+    
+
+    return 0;
+}
