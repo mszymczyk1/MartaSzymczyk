@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+class Point {
+    int m_x;
+    int m_y;
+public:
+    Point(int x = 0, int y = 0)
+    {
+        m_x = x;
+        m_y = y;
+    }
+    void set_x(int set_x)
+    {
+        m_x = set_x;
+    }
+    void set_y(int set_y)
+    {
+        m_y = set_y;
+    }
+    int get_x()  {return m_x;}
+    int get_y()  {return m_y;}
+};
+int main()
+{
+    Point p1;
+    std::cout << p1.get_x() << "," << p1.get_y() << std::endl;
+    p1.set_x(2);
+    p1.set_y(3);
+    cout << p1.get_x() << "," << p1.get_y() << endl;
+    return 0;
+}
