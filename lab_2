@@ -1,0 +1,39 @@
+#include <iostream>
+
+using namespace std;
+class rational_number{
+    private:
+    int m_n;
+    int m_m;
+    public:
+    rational_number(int n=1, int m=1){
+        m_n=n;
+        m_m=m;
+    }
+    rational_number add(const rational_number& r)
+    {
+        int den_res=m_m*r.m_m;
+        int num_res=m_n + m_n*r.m_m;
+        return rational_number(num_res,den_res);
+    }
+    
+    rational_number sub(const rational_number& r_s){
+        int den_res_sub=m_m*r_s.m_m;
+        int num_res_sub=m_n*m_m - m_n*r_s.m_m;
+        return rational_number(num_res_sub,den_res_sub);
+        
+    }
+    
+    friend rational_number mult(const rational_number& l_m,const rational_number& r_m){
+      int den_res_mult=l_m.m_m*r_m.m_m;
+      int num_res_mult=l_m.m_n*r_m.m_n;
+      return rational_number(num_res_mult, den_res_mult);
+      
+    }
+    
+    friend rational_number divi(const rational_number& l_d,const rational_number& r_d){
+      int den_res_divi=r_d.m_m%l_d.m_m;
+      int num_res_divi=r_d.m_n%l_d.m_n;
+      return rational_number(num_res_divi, den_res_divi);
+      
+    }
