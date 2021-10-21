@@ -18,10 +18,10 @@ class rational_number{
     friend rational_number operator- (const rational_number& r, const rational_number& r_r);
     friend rational_number operator* (const rational_number& r, const rational_number& r_r);
     friend rational_number operator% (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator<< (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator>> (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator== (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator!= (const rational_number& r, const rational_number& r_r);
+    friend ostream&  operator<< (ostream& out,const rational_number& r);
+    friend istream& operator>> (istream& in, rational_number& r);
+    friend bool operator== (const rational_number& r, const rational_number& r_r);
+    friend bool operator!= (const rational_number& r, const rational_number& r_r);
     friend rational_number operator< (const rational_number& r, const rational_number& r_r);
     friend rational_number operator> (const rational_number& r, const rational_number& r_r);
 };
@@ -51,19 +51,40 @@ class rational_number{
         int num_res=r.m_n*r_r.m_m;
         return rational_number(num_res,den_res);
     }
+    ostream& operator<< (ostream& out,const rational_number& r)
+    {
+        out << "Your rational number is equal to: " << r.getRationalNumber_n() << "/" << r.getRationalNumber_m();
+        return out;
+    }
+    
+    istream& operator>> (istream& in, rational_number& r)
+    {
+        in >> r.m_n;
+        in >> r.m_m;
+        return in;
+    }
+    
+    /*bool operator== (const rational_number& r, const rational_number& r_r)
+    {
+        
+    } */
     
 int main()
 {   
-    rational_number r1(1,3);
-    rational_number r2(1,3);
-    rational_number r1_r2_sum=r1 + r2;
+    //rational_number r1(1,3);
+    //rational_number r2(1,3);
+    //rational_number r1_r2_sum=r1 + r2;
     //cout<<r1_r2_sum.getRationalNumber_n() << "," <<  r1_r2_sum.getRationalNumber_m() << endl;
-    rational_number r1_r2_sub= r1-r2;
+    //rational_number r1_r2_sub= r1-r2;
     //cout<<r1_r2_sub.getRationalNumber_n() << "," <<  r1_r2_sub.getRationalNumber_m() << endl;
-    rational_number r1_r2_mult= r1*r2;
+    //rational_number r1_r2_mult= r1*r2;
     //cout<<r1_r2_mult.getRationalNumber_n() << "," <<  r1_r2_mult.getRationalNumber_m() << endl;
-    rational_number r1_r2_div= r1%r2;
-    cout<<r1_r2_div.getRationalNumber_n() << "," <<  r1_r2_div.getRationalNumber_m() << endl;
-
+    //rational_number r1_r2_div= r1%r2;
+    //cout<<r1_r2_div.getRationalNumber_n() << "," <<  r1_r2_div.getRationalNumber_m() << endl;
+    //cout << r1;
+    cout << "Enter a rational number: " << endl;
+    rational_number r3;
+    cin >> r3;
+    cout << "You entered: " << r3 <<'\n';
     return 0;
 }
