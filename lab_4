@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cassert> 
+using namespace std;
+class Fraction{
+    private:
+    int m_n;
+    int m_d;
+    public:
+    Fraction(int n=0, int d=1) :
+        m_n(n), m_d(d)
+        {
+            assert(d !=0);
+        }
+    
+    Fraction(const Fraction& fraction) :
+    m_n(fraction.m_n), m_d(fraction.m_d)
+    {
+        cout << "Here we called copy constructor!" << endl;
+    }
+    
+    int getFraction_n() const { return m_n; }
+    int getFraction_d() const { return m_d; }
+    Fraction& operator= (const Fraction& fraction)
+    {
+     m_n=fraction.m_n;
+     m_d=fraction.m_d;
+     return *this;
+    }
+    friend ostream& operator<< (ostream& out,const Fraction& fraction)
+    {
+        out << "Your rational number is equal to: " << fraction.getFraction_n() << "/" << fraction.getFraction_d();
+        return out;
+    }
+    friend istream& operator>> (istream& in, Fraction& fraction)
+    {
+        in >> fraction.m_n;
+        in >> fraction.m_d;
+        return in;
+    }
+    Fraction& operator++ () //prefix increment operator
+    {
+        m_n=+m_d;
+        return *this;
+    }
+    
+    Fraction& operator++ (int) //postfix increment operator
+    {
+        Fraction temp(m_n);
+        m_n=+m_d;
+        return temp;
+        
+    }
+    Fraction& operator double()
+    {
+        double value;
+        value=m_n/m_d;
+        return(value);
+    }
+    
+    };
+    
+int main()
+{
+    Fraction f1(5,3);
+    Fraction copy_f1(f1);
+    Fraction f2;
+    f2=f1;
+    cout << f1;
+    return 0;
+}
