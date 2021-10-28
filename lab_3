@@ -1,90 +1,73 @@
 #include <iostream>
-
+#include <cassert> 
 using namespace std;
-class rational_number{
+class Fraction{
     private:
     int m_n;
-    int m_m;
+    int m_d;
     public:
-    rational_number(int n=1, int m=1){
-        m_n=n;
-        m_m=m;
+    Fraction(int n=0, int d=1) :
+        m_n(n), m_d(d)
+        {
+            assert(d !=0);
+        }
+    
+    Fraction(const Fraction& fraction) :
+    m_n(fraction.m_n), m_d(fraction.m_d)
+    {
+        cout << "Here we called copy constructor!" << endl;
     }
     
-    int getRationalNumber_n() const { return m_n; }
-    int getRationalNumber_m() const { return m_m; }
-    
-    friend rational_number operator+ (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator- (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator* (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator% (const rational_number& r, const rational_number& r_r);
-    friend ostream&  operator<< (ostream& out,const rational_number& r);
-    friend istream& operator>> (istream& in, rational_number& r);
-    friend bool operator== (const rational_number& r, const rational_number& r_r);
-    friend bool operator!= (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator< (const rational_number& r, const rational_number& r_r);
-    friend rational_number operator> (const rational_number& r, const rational_number& r_r);
-};
-    rational_number operator+ (const rational_number& r, const rational_number& r_r)
+    int getFraction_n() const { return m_n; }
+    int getFraction_d() const { return m_d; }
+    Fraction& operator= (const Fraction& fraction)
     {
-        int den_res=r.m_m*r_r.m_m;
-        int num_res=r.m_n*r_r.m_m + r_r.m_n*r.m_m;
-        return rational_number(num_res,den_res);
+     m_n=fraction.m_n;
+     m_d=fraction.m_d;
+     return *this;
     }
-    
-    rational_number operator- (const rational_number& r, const rational_number& r_r)
+    friend ostream& operator<< (ostream& out,const Fraction& fraction)
     {
-        int den_res=r.m_m*r_r.m_m;
-        int num_res=r.m_n*r_r.m_m - r_r.m_n*r.m_m;
-        return rational_number(num_res,den_res);
-    }
-    
-    rational_number operator* (const rational_number& r, const rational_number& r_r)
-    {
-        int den_res=r.m_m*r_r.m_m;
-        int num_res=r.m_n*r_r.m_n;
-        return rational_number(num_res,den_res);
-    }
-    rational_number operator% (const rational_number& r, const rational_number& r_r)
-    {
-        int den_res=r.m_m*r_r.m_n;
-        int num_res=r.m_n*r_r.m_m;
-        return rational_number(num_res,den_res);
-    }
-    ostream& operator<< (ostream& out,const rational_number& r)
-    {
-        out << "Your rational number is equal to: " << r.getRationalNumber_n() << "/" << r.getRationalNumber_m();
+        out << "Your rational number is equal to: " << fraction.getFraction_n() << "/" << fraction.getFraction_d();
         return out;
     }
-    
-    istream& operator>> (istream& in, rational_number& r)
+    friend istream& operator>> (istream& in, Fraction& fraction)
     {
-        in >> r.m_n;
-        in >> r.m_m;
+        in >> fraction.m_n;
+        in >> fraction.m_d;
         return in;
     }
-    
-    /*bool operator== (const rational_number& r, const rational_number& r_r)
+    Fraction& operator++ () //prefix increment operator
     {
+        m_n=+m_d;
+        return *this;
+    }
+    
+    Fraction operator++ (int) //postfix increment operator
+    {
+        Fraction temp(*this);
+        m_n=+m_d;
+        return temp;
         
-    } */
+    }
+    operator double()
+    {
+        double value;
+        value=(m_n)%(m_d);
+        return value;
+    }
+    
+    };
     
 int main()
-{   
-    //rational_number r1(1,3);
-    //rational_number r2(1,3);
-    //rational_number r1_r2_sum=r1 + r2;
-    //cout<<r1_r2_sum.getRationalNumber_n() << "," <<  r1_r2_sum.getRationalNumber_m() << endl;
-    //rational_number r1_r2_sub= r1-r2;
-    //cout<<r1_r2_sub.getRationalNumber_n() << "," <<  r1_r2_sub.getRationalNumber_m() << endl;
-    //rational_number r1_r2_mult= r1*r2;
-    //cout<<r1_r2_mult.getRationalNumber_n() << "," <<  r1_r2_mult.getRationalNumber_m() << endl;
-    //rational_number r1_r2_div= r1%r2;
-    //cout<<r1_r2_div.getRationalNumber_n() << "," <<  r1_r2_div.getRationalNumber_m() << endl;
-    //cout << r1;
-    cout << "Enter a rational number: " << endl;
-    rational_number r3;
-    cin >> r3;
-    cout << "You entered: " << r3 <<'\n';
+{
+    Fraction f1(1,2);
+    Fraction copy_f1(f1);
+    Fraction f2;
+    f2=f1;
+    cout << f1 << endl;
+    cout << f2 << endl;
+    ++f2;
+    cout << f1;
     return 0;
 }
