@@ -1,0 +1,41 @@
+
+#include <iostream>
+
+using namespace std;
+
+class Student 
+{
+    string m_name;
+    unsigned int m_id;
+    float m_grade;
+public:
+    Student(string name = "Imie Nazwisko", unsigned int id = 0, float grade = 2.0) {
+        m_name = name;
+        m_id = id;
+        m_grade = grade;
+
+    }
+    
+    string getStudentName() const { return m_name; }
+    unsigned int getStudentId() const { return m_id; }
+    float getStudentGrade() const { return m_grade; }
+    void setStudentName(const string& name) { m_name = name; }
+    void setStudentId(const unsigned int& id) { m_id = id; }
+    void setStudentGrade(const float& grade) { m_grade = grade; }
+    void printStudent() { cout << "Name:" << getStudentName() << " Id:" << getStudentId() << " Grade:" << getStudentGrade() << endl; }
+};
+
+int main()
+{
+    Student student1("Marta Szymczyk",1,4.5);
+    student1.printStudent();
+    Student student2("Salman Khadour", 2, 5.0);
+    student2.printStudent();
+    Student student3("Tomasz Wadolowski", 3, 3.0);
+    student3.printStudent();
+    student1.setStudentName("MSZ");
+    student1.printStudent();
+    float meanValue = (student1.getStudentGrade() + student2.getStudentGrade() +student3.getStudentGrade())/(float) 3;
+    cout << meanValue;
+    return 0;
+}
