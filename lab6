@@ -1,0 +1,30 @@
+#include <iostream>
+#include <math.h>
+void quadratic_eq(float a, float b, float c, float &result1, float &result2){
+    float delta = (b*b)-4*a*c;
+    if (delta < 0){
+        throw "Equation has no real solutions";
+        std::cout << "This never prints";}
+    else if( delta > 0){
+        result1 = (-b-sqrt(delta))/(2*a);
+        result2 = (-b+sqrt(delta))/(2*a);
+    }
+    else if( delta=0 ){
+        result1 = -b*(2*a);
+    }
+
+}
+using namespace std;
+
+int main()
+{   float a,b,c;
+    cout<<"Please insert a:";
+    cin >> a;
+    cout << "Please insert b:";
+    cin >> b;
+    cout << "Please insert c:";
+    cin >> c;
+    quadratic_eq(a,b,c,);
+    
+    return 0;
+}
