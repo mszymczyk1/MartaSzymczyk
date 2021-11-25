@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+void shopping_list_print(vector <string> const &shopping_list){
+    cout << "My shopping list:";
+    for(auto item : shopping_list){
+        cout << item << " ";
+    }
+}
+
+
+
+int main()
+{
+    vector <string> shopping_list;
+    shopping_list.push_back("wine");
+    shopping_list_print(shopping_list);
+    cout <<endl;
+    
+    shopping_list.push_back("beetroot");
+    shopping_list_print(shopping_list);
+     cout <<endl;
+     
+    shopping_list.push_back("bananas");
+    shopping_list_print(shopping_list);
+     cout <<endl;
+     
+    shopping_list.push_back("sugar");
+    shopping_list_print(shopping_list);
+     cout <<endl;
+     
+    shopping_list.push_back("chocolate");
+    shopping_list_print(shopping_list);
+     cout <<endl;
+     
+    shopping_list.push_back("carrot");
+    shopping_list_print(shopping_list);
+    cout <<endl;
+    
+    cout << "Last element of my shopping list:" << shopping_list.at(5) << endl;
+    
+    shopping_list.pop_back();
+    shopping_list_print(shopping_list);
+    cout <<endl;
+    
+    shopping_list.insert(shopping_list.begin()+2, "coffee");
+    shopping_list_print(shopping_list);
+    cout <<endl;
+    
+    for(int i=0; i<shopping_list.size();i++){
+        if(shopping_list[i]=="sugar"){
+            shopping_list[i]="candy";
+        }
+    }
+    shopping_list_print(shopping_list);
+    cout <<endl;
+    
+    for(int i=0; i<shopping_list.size();i++){
+        if(shopping_list[i]=="chocolate"){
+            shopping_list.erase(shopping_list.begin()+i);
+        }
+    }
+    shopping_list_print(shopping_list);
+    cout <<endl;
+    
+    for(int i=0; i<shopping_list.size();i++){
+        if(shopping_list[i]=="beetroot"){
+            shopping_list.erase(shopping_list.begin()+i);
+        }
+    }
+    shopping_list_print(shopping_list);
+    cout <<endl;
+    return 0;
+}
